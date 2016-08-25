@@ -1,37 +1,73 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using WebApplication.Models;
-using WebApplication.Models.ManageViewModels;
-using WebApplication.Services;
 
 namespace WebApplication.Controllers
 {
-    [Route("/api/courses")]
+    [Route("api/[controller]")]
     public class CoursesController : Controller
     {
-        /*public List<Course> GetCourses()
+        public CoursesController(ICoursesRepository course)
         {
-            return new List<Course>
+            Course = course;
+        }
+        public ICoursesRepository Course { get; set; }
+        IEnumerable<Course> GetAllCourses()
+        {
+            return Course.GetAllCourses();
+        }
+
+        [HttpGet("{id}", Name = "GetCourse")]
+        public IActionResult GetCourseById(string id)
+        {
+            var item = Course.FindCourse(id); //Finds the id of the course
+            if (item == null)
             {
-                new Course
-                {
-                    ID = 1,
-                    Title = "Discovery",
-                    Artist = "Daft Punk"
-                },
-                new Course
-                {
-                    ID = 2,
-                    Title = "Discovery",
-                    Artist = "Daft Punk"
-                }
-            };
-        }*/
+                return NotFound(); // glosa fall
+            }
+            return new ObjectResult(item); // glosa fall
+        }
+
+        [HttpPost]
+        public IActionResult AddCourse([FromBody] Course item)
+        {
+            // glosa FromBody
+            if (item == null)
+            {
+                return BadRequest();
+            }
+            Course.AddCourse(item);
+            return CreatedAtRoute("GetCourse", new { id = item.TemplateID }, item);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateCourse(string id, [FromBody] Course item)
+        {
+            if (item == null || item.ID.ToString() != id)
+            {
+                return BadRequest();
+            }
+
+            var course = Course.FindCourse(id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            Course.UpdateCourse(item);
+            return new NoContentResult(); // glosa fall
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult RemoveCourse(string id)
+        {
+            var course = Course.FindCourse(id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+            Course.RemoveCourse(id);
+            return new NoContentResult();
+        }
     }
 }

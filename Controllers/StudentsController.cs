@@ -15,9 +15,36 @@ namespace WebApplication.Controllers
     [Route("/api/students")]
     public class StudentsController : Controller
     {
-        public List<Course> GetStudents()
+        private static List<Student> _students;
+        public StudentsController()
         {
+            if (_students == null)
+            {
+                _students = new List<Student>
+                {
+                    new Student
+                    {
+                        SSN  = 0104932859,
+                        Name = "Holmfridur"
+                    },
+                    new Student
+                    {
+                        SSN  = 0293265523,
+                        Name = "Steinn"
+                    },
+                    new Student
+                    {
+                        SSN  = 0655231129,
+                        Name = "Tomas"
+                    },
+                };
+            }
+        }
 
+        public ActionResult Index()
+        {
+           Console.WriteLine("got here.");
+           return View();
         }
     }
 }

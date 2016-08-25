@@ -47,6 +47,8 @@ namespace WebApplication
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddSingleton<ICoursesRepository, CoursesRepository>();
+            
             services.AddMvc();
 
             // Add application services.
@@ -81,7 +83,10 @@ namespace WebApplication
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}"
+                );
+                
+                
             });
         }
     }
