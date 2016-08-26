@@ -19,50 +19,51 @@ namespace WebApplication.Controllers
         }
 
         [HttpGet("{id}", Name = "GetCourse")]
-        public IActionResult GetCourseById(string id)
+        public IActionResult GetCourseById(int id)
         {
-            var item = Course.FindCourse(id); //Finds the id of the course
+            var item = Course.FindCourse(id); //Finds cours that has given ID
             if (item == null)
             {
-                return NotFound(); // glosa fall
+                return NotFound();
             }
             return new ObjectResult(item); // glosa fall
         }
 
         [HttpPost]
-        public IActionResult AddCourse([FromBody] Course item)
+        public IActionResult AddCourse([FromBody] Course course)
         {
-            // glosa FromBody
-            if (item == null)
+            // FromBody = action parameter to bind a simple type from the request body
+            if (course == null)
             {
                 return BadRequest();
             }
-            Course.AddCourse(item);
-            return CreatedAtRoute("GetCourse", new { id = item.TemplateID }, item);
+            Course.AddCourse(course);
+            var location = Url.Link("GetCourse", new { id = course.ID }); 
+            return Created(location, course);
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateCourse(string id, [FromBody] Course item)
+        public IActionResult UpdateCourse(int id, [FromBody] Course newCourse)
         {
-            if (item == null)
+            if (newCourse == null)
             {
                 return BadRequest();
             }
 
-            item.ID = Convert.ToInt32(id);
+            //item.ID = Convert.ToInt32(id);
 
-            var course = Course.FindCourse(id);
-            if (course == null)
+            var oldCourse = Course.FindCourse(id);
+            if (oldCourse == null)
             { 
                 return NotFound();
             }
 
-            Course.UpdateCourse(item);
-            return new NoContentResult(); // glosa fall
+            Course.UpdateCourse(id, newCourse, oldCourse);
+            return new NoContentResult();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult RemoveCourse(string id)
+        public IActionResult RemoveCourse(int id)
         {
             var course = Course.FindCourse(id);
             if (course == null)

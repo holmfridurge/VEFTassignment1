@@ -7,13 +7,13 @@ namespace WebApplication.Models
         // Get a list of courses
         IEnumerable<Course> GetAllCourses();
         // Add a course
-        void AddCourse(Course item);
+        Course AddCourse(Course course);
         // Find a course with specific id
-        Course FindCourse(string key);
+        Course FindCourse(int id);
         // Update a course
-        void UpdateCourse(Course item);
+        Course UpdateCourse(int id, Course newCourse, Course oldCourse);
         // Remove a course
-        Course RemoveCourse(string key);
+        Course RemoveCourse(int id);
         // TODO: Get a list of stodents in a course
         // TODO: Add a student to a course
     }

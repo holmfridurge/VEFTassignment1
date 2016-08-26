@@ -45,12 +45,12 @@ TODO List:
 This list is presented in no particular order.
 Please put your name in paranthesis behind the task you are working on.
   - [X] Get a list of courses.
-  - [X] Add a course. (Fríða)
-    - [X] Auto generate unique ID for courses. (Fríða)
-  - [X] Update a course. (Fríða)
-    - [X] Without manually changing ID (Fríða)
-  - [X] Delete a course. (Fríða)
-  - [X] Get a course with a given ID. (Fríða)
+  - [X] Add a course.
+    - [X] Auto generate unique ID for courses.
+  - [X] Update a course.
+    - [X] Without manually changing ID.
+  - [X] Delete a course.
+  - [X] Get a course with a given ID.
   - [ ] Get a list of students in a course.
   - [ ] Add a student to a course.
   - [ ] Add correct HTTP status codes.
