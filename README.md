@@ -20,9 +20,11 @@ A course should have the following properties - all required
   - ID (Example: 1)
   - StartDate (Example: 2016-08-17)
   - EndDate (Example: 2016-11-08)
+
 A student has the following properties - all required
   - SSN
   - Name
+
 It should support the following operations:
   - Get a list of courses (10%)
   - Add a course (10%)
@@ -31,6 +33,7 @@ It should support the following operations:
   - Get a course with a given ID (10%)
   - Get a list of students in a course (10%)
   - Add a student to a course (10%)
+
 The service should be designed according to the REST philosophy:
   - using resources (10%)
   - using the HTTP verbs (GET, POST, PUT, DELETE) for different operations (10%)
@@ -41,7 +44,7 @@ TODO List:
 
 This list is presented in no particular order.
 Please put your name in paranthesis behind the task you are working on.
-  - [ ] Get a list of courses.
+  - [X] Get a list of courses.
   - [X] Add a course. (Fríða)
     - [ ] Auto generate unique ID for courses. (Fríða)
   - [X] Update a course. (Fríða)
