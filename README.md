@@ -46,7 +46,7 @@ This list is presented in no particular order.
 Please put your name in paranthesis behind the task you are working on.
   - [X] Get a list of courses.
   - [X] Add a course. (Fríða)
-    - [ ] Auto generate unique ID for courses. (Fríða)
+    - [X] Auto generate unique ID for courses. (Fríða)
   - [X] Update a course. (Fríða)
     - [ ] Without manually changing ID (Fríða)
   - [X] Delete a course. (Fríða)

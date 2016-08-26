@@ -8,6 +8,7 @@ namespace WebApplication.Models
     {
         private static ConcurrentDictionary<string, Course> _courses =
               new ConcurrentDictionary<string, Course>();
+        int _nextID = 0;
 
         public CoursesRepository()
         {
@@ -21,6 +22,7 @@ namespace WebApplication.Models
 
         public void AddCourse(Course item)
         {
+            item.ID = _nextID++;
             _courses[item.ID.ToString()] = item;
         }
 
