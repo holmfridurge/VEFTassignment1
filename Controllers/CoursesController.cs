@@ -50,7 +50,7 @@ namespace WebApplication.Controllers
                 return BadRequest();
             }
 
-            //item.ID = Convert.ToInt32(id);
+            newCourse.ID = Convert.ToInt32(id);
 
             var oldCourse = Course.FindCourse(id);
             if (oldCourse == null)
