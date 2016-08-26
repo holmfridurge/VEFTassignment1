@@ -12,7 +12,7 @@ namespace WebApplication.Controllers
             Course = course;
         }
         public ICoursesRepository Course { get; set; }
-        IEnumerable<Course> GetAllCourses()
+        public IEnumerable<Course> GetAllCourses()
         {
             return Course.GetAllCourses();
         }
