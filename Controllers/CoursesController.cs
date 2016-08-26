@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication.Models;
+using System;
 
 namespace WebApplication.Controllers
 {
@@ -43,14 +44,16 @@ namespace WebApplication.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateCourse(string id, [FromBody] Course item)
         {
-            if (item == null || item.ID.ToString() != id)
+            if (item == null)
             {
                 return BadRequest();
             }
 
+            item.ID = Convert.ToInt32(id);
+
             var course = Course.FindCourse(id);
             if (course == null)
-            {
+            { 
                 return NotFound();
             }
 

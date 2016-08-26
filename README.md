@@ -48,7 +48,7 @@ Please put your name in paranthesis behind the task you are working on.
   - [X] Add a course. (Fríða)
     - [X] Auto generate unique ID for courses. (Fríða)
   - [X] Update a course. (Fríða)
-    - [ ] Without manually changing ID (Fríða)
+    - [X] Without manually changing ID (Fríða)
   - [X] Delete a course. (Fríða)
   - [X] Get a course with a given ID. (Fríða)
   - [ ] Get a list of students in a course.
