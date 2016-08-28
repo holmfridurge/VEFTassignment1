@@ -1,24 +1,18 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using WebApplication.Models;
-using WebApplication.Models.ManageViewModels;
-using WebApplication.Services;
 
 namespace WebApplication.Controllers
 {
     [Route("/api/students")]
     public class StudentsController : Controller
     {
-        private static List<Student> _students;
-        public StudentsController()
+        //private static List<Student> _students;
+        public StudentsController(IStudentsRepository student)
         {
-            if (_students == null)
+            Student = student;
+            /*if (_students == null)
             {
                 _students = new List<Student>
                 {
@@ -38,7 +32,12 @@ namespace WebApplication.Controllers
                         Name = "Tomas"
                     },
                 };
-            }
+            }*/
+        }
+        public IStudentsRepository Student { get; set; }
+        public IEnumerable<Student> GetAllStudents()
+        {
+            return Student.GetAllStudents();
         }
 
         public ActionResult Index()
