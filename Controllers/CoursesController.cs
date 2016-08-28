@@ -26,7 +26,7 @@ namespace WebApplication.Controllers
             {
                 return NotFound();
             }
-            return new ObjectResult(item); // glosa fall
+            return new ObjectResult(item);
         }
 
         [HttpPost]
