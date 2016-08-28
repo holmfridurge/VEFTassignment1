@@ -13,18 +13,18 @@ namespace WebApplication.Models
         {
             AddStudent(new Student
             {
-                Name = "Holmfridur",
-                SSN = "555"
+                Name = "Hólmfríður Guðlaug Einarsdóttir",
+                SSN = "0104932859"
             });
             AddStudent(new Student
             {
-                Name = "Steinn",
-                SSN = "666"
+                Name = "Þorvarður Bergmann",
+                SSN = "123456789"
             });
             AddStudent(new Student
             {
-                Name = "Tomas",
-                SSN = "777"
+                Name = "Daníel Brandur",
+                SSN = "123456789"
             });
         }
 

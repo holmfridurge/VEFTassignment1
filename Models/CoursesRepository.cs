@@ -9,33 +9,33 @@ namespace WebApplication.Models
         // this is the map containing all the courses.
         private static ConcurrentDictionary<int, Course> _courses =
               new ConcurrentDictionary<int, Course>();
-        int _nextID = 0;
+        int _nextID = 1;
 
         public CoursesRepository()
         {
             AddCourse(new Course
             {
-                //ID = 1,
                 Name = "Web services",
                 TemplateID = "T-514-VEFT",
                 StartDate = DateTime.Now,
-                EndDate = DateTime.Now.AddMonths(3)
+                EndDate = DateTime.Now.AddMonths(3),
+                Students = new StudentsRepository()
             });
             AddCourse(new Course
             {
-                //ID = 2,
                 Name = "Final project",
                 TemplateID = "T-404-LOKA",
                 StartDate = DateTime.Now,
-                EndDate = DateTime.Now.AddMonths(3)
+                EndDate = DateTime.Now.AddMonths(3),
+                Students = new StudentsRepository()
             });
             AddCourse(new Course
             {
-                //ID = 3,
                 Name = "Advanced software engineering",
                 TemplateID = "T-730-ASEN",
                 StartDate = DateTime.Now,
-                EndDate = DateTime.Now.AddMonths(3)
+                EndDate = DateTime.Now.AddMonths(3),
+                Students = new StudentsRepository()
             });
         }
 

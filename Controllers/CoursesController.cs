@@ -55,6 +55,7 @@ namespace WebApplication.Controllers
             newCourse.ID = id;
 
             var oldCourse = Course.FindCourse(id);
+            // Checks if course that will be changed exists.
             if (oldCourse == null)
             {
                 return NotFound();
@@ -81,7 +82,7 @@ namespace WebApplication.Controllers
         //--------------------------------------------------------
 
         // will return all the students in the course with the following id.
-        [HttpGet("{id}/students")]
+        [HttpGet("{id}/students", Name="GetStudent")]
         public IEnumerable<Student> GetStudentsInCourse(int id)
         {
             return Course.GetAllStudentsInCourse(id);

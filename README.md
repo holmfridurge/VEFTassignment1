@@ -52,17 +52,20 @@ Please put your name in paranthesis behind the task you are working on.
   - [X] Delete a course.
   - [X] Get a course with a given ID.
   - [X] Get a list of students in a course.
-  - [ ] Add a student to a course.
-  - [ ] Add correct HTTP status codes.
-    - [ ] 404 - Resource doesn't exist.
-    - [ ] 202 - Resource created.
-    - [ ] 204 - Resource deleted.
-    - [ ] 400 (412) - Required properties missing.
-  - [ ] Clean up and comment code.
-    - [ ] Courses.
-    - [ ] CoursesRepository.
-    - [ ] ICoursesRepository.
-    - [ ] CoursesController.
+  - [X] Add a student to a course.
+  - [X] Add correct HTTP status codes.
+    - [X] 404 - Resource doesn't exist.
+    - [X] 202 - Resource created.
+    - [X] 204 - Resource deleted.
+    - [X] 400 (412) - Required properties missing.
+  - [X] Clean up and comment code.
+    - [X] Courses.
+    - [X] CoursesRepository.
+    - [X] ICoursesRepository.
+    - [X] CoursesController.
+    - [X] IStudentsRepository.
+    - [X] StudentsRepository.
+    - [X] Students.
 
 
 Install Guide:
@@ -70,4 +73,4 @@ Install Guide:
   - git clone https://github.com/holmfridurge/VEFTassignment1
   - dotnet build
   - dotnet restore
-  - doenet watch run
+  - dotnet watch run
