@@ -51,7 +51,7 @@ Please put your name in paranthesis behind the task you are working on.
     - [X] Without manually changing ID.
   - [X] Delete a course.
   - [X] Get a course with a given ID.
-  - [ ] Get a list of students in a course.
+  - [X] Get a list of students in a course.
   - [ ] Add a student to a course.
   - [ ] Add correct HTTP status codes.
     - [ ] 404 - Resource doesn't exist.
