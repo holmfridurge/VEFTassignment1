@@ -89,7 +89,7 @@ namespace WebApplication.Controllers
         }
 
         // Adds a new student to the course with the following 'courseID'.
-        [Route("api/course/{courseID:int}/students")]
+        [Route("{courseID:int}/students")]
         [HttpPost]
         public IActionResult AddStudent(int courseID, [FromBody] Student student)
         {

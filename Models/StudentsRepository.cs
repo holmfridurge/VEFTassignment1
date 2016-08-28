@@ -6,7 +6,7 @@ namespace WebApplication.Models
     public class StudentsRepository : IStudentsRepository
     {
         // the map variable that contains all the students.
-        private static ConcurrentDictionary<string, Student> _students =
+        private ConcurrentDictionary<string, Student> _students =
             new ConcurrentDictionary<string, Student>();
 
         public StudentsRepository()
