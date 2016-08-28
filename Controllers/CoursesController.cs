@@ -29,13 +29,6 @@ namespace WebApplication.Controllers
             return new ObjectResult(item);
         }
 
-//--------------------------------------------------------
-        [HttpGet("{id}/students")]
-        public IActionResult GetStudentsInCourse(int id)
-        {
-            
-        }
-//--------------------------------------------------------
         [HttpPost]
         public IActionResult AddCourse([FromBody] Course course)
         {
@@ -81,16 +74,22 @@ namespace WebApplication.Controllers
             return new NoContentResult();
         }
 
-
-
-
-        /*[HttpPost]
-        [Route("{courseInstanceID:int}/students")]
-        public IActionResult AddStudent(int courseInstanceID, Student student)
+        //--------------------------------------------------------
+        
+        [HttpGet("{id}/students")]
+        public IEnumerable<Student> GetStudentsInCourse(int id)
         {
-            // model.SSN now contains the value passed in
+            return Course.GetAllStudentsInCourse(id);
+        }
 
-        }*/
+        [HttpPost("{courseID}/students")]
+        //[Route("{courseInstanceID:int}/students")]
+        public IActionResult AddStudent(int courseID, Student student)
+        {
+            System.Console.WriteLine("komst í Controller: AddStudent");
+            Course.AddStudent(courseID, student);
+            return null;   // þarf að gera rétt
+        }
 
     }
 }

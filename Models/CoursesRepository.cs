@@ -46,6 +46,7 @@ namespace WebApplication.Models
         public Course AddCourse(Course course)
         {
             course.ID = _nextID++;
+            course.Students = new StudentsRepository();
             _courses.TryAdd(course.ID, course);
             return course;
         }
@@ -71,6 +72,15 @@ namespace WebApplication.Models
         {
             _courses.TryUpdate(id, newCourse, oldCourse);
             return newCourse;
+        }
+        public IEnumerable<Student> GetAllStudentsInCourse(int courseID)
+        {
+            return _courses[courseID].Students.GetAllStudents();
+        }
+        public Student AddStudent(int courseID, Student student)
+        {
+            _courses[courseID].Students.AddStudent(student);
+            return student;
         }
     }
 }

@@ -1,11 +1,10 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication.Models;
-using System;
 
 namespace WebApplication.Controllers
 {
-    [Route("/api/[controller]")]
+    [Route("/api/courses/{courseID}/[controller]")]
     public class StudentsController : Controller
     {
         public StudentsController(IStudentsRepository student)
@@ -41,4 +40,4 @@ namespace WebApplication.Controllers
         }
         
     }
-}
+}*/

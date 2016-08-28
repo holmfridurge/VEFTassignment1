@@ -15,14 +15,8 @@ namespace WebApplication.Models
         // Remove a course
         Course RemoveCourse(int id);
         // TODO: Get a list of stodents in a course
+        IEnumerable<Student> GetAllStudentsInCourse(int courseID);
         // TODO: Add a student to a course
-    }
-
-    public interface IStudentsRepository
-    {
-        IEnumerable<Student> GetAllStudents();
-
-        Student AddStudent(int courseInstanceID, Student student);
-        Student FindStudent(string ssn);
+        Student AddStudent(int courseID, Student student);
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
 
@@ -8,7 +7,6 @@ namespace WebApplication.Models
     {
         private static ConcurrentDictionary<string, Student> _students =
             new ConcurrentDictionary<string, Student>();
-        //int _nextSSN = 0;
 
         public StudentsRepository()
         {

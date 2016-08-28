@@ -13,7 +13,6 @@ namespace WebApplication.Models
         // example: "T-514-VEFT"
         [Required]
         public int ID { get; set; }
-        Student student { get; set; }
         // example: 1
         [Required]
         public DateTime StartDate { get; set; }
@@ -21,5 +20,6 @@ namespace WebApplication.Models
         [Required]
         public DateTime EndDate { get; set; }
         // example: "2016-11-08"
+        public IStudentsRepository Students { get; set; }
     }
 }
