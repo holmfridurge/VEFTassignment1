@@ -5,6 +5,7 @@ namespace WebApplication.Models
 {
     public class StudentsRepository : IStudentsRepository
     {
+        // the map variable that contains all the students.
         private static ConcurrentDictionary<string, Student> _students =
             new ConcurrentDictionary<string, Student>();
 
@@ -26,6 +27,7 @@ namespace WebApplication.Models
                 SSN = "777"
             });
         }
+
         public IEnumerable<Student> GetAllStudents()
         {
             return _students.Values;
@@ -36,6 +38,7 @@ namespace WebApplication.Models
             _students.TryAdd(student.SSN, student);
             return student;
         }
+        
         public Student FindStudent(string ssn)
         {
             Student student;

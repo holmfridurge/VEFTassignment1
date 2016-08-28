@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication.Models
 {
+    /// A simple class that contains everything we need to know about a course.
     public class Course
     {
         [Required]
@@ -20,6 +21,7 @@ namespace WebApplication.Models
         [Required]
         public DateTime EndDate { get; set; }
         // example: "2016-11-08"
+        
         public IStudentsRepository Students { get; set; }
     }
 }

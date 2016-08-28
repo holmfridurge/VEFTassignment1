@@ -75,20 +75,25 @@ namespace WebApplication.Controllers
         }
 
         //--------------------------------------------------------
-        
+
         [HttpGet("{id}/students")]
         public IEnumerable<Student> GetStudentsInCourse(int id)
         {
             return Course.GetAllStudentsInCourse(id);
         }
 
-        [HttpPost("{courseID}/students")]
-        //[Route("{courseInstanceID:int}/students")]
-        public IActionResult AddStudent(int courseID, Student student)
+        [Route("api/course/{courseID:int}/students")]
+        [HttpPost]
+        public IActionResult AddStudent(int courseID, [FromBody] Student student)
         {
-            System.Console.WriteLine("komst í Controller: AddStudent");
+            if (student == null)
+            {
+                return BadRequest();
+            }
             Course.AddStudent(courseID, student);
-            return null;   // þarf að gera rétt
+            
+            var location = Url.Link("GetStudent", new { id = student.SSN });
+            return Created(location, student);
         }
 
     }
