@@ -6,6 +6,7 @@ namespace WebApplication.Models
 {
     public class CoursesRepository : ICoursesRepository
     {
+        // this is the map containing all the courses.
         private static ConcurrentDictionary<int, Course> _courses =
               new ConcurrentDictionary<int, Course>();
         int _nextID = 0;
@@ -73,10 +74,14 @@ namespace WebApplication.Models
             _courses.TryUpdate(id, newCourse, oldCourse);
             return newCourse;
         }
+
+        // within the course containing the 'courseID', return all the students.
         public IEnumerable<Student> GetAllStudentsInCourse(int courseID)
         {
             return _courses[courseID].Students.GetAllStudents();
         }
+
+        // add a new student into the course containing the following ID.
         public Student AddStudent(int courseID, Student student)
         {
             _courses[courseID].Students.AddStudent(student);

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace WebApplication.Models
 {
+    /// This class handles a map og courses and every variable contained within it.
     public interface ICoursesRepository
     {
         // Get a list of courses

@@ -12,7 +12,10 @@ namespace WebApplication.Controllers
         {
             Course = course;
         }
+
+        // the map of courses
         public ICoursesRepository Course { get; set; }
+
         public IEnumerable<Course> GetAllCourses()
         {
             return Course.GetAllCourses();
@@ -50,7 +53,7 @@ namespace WebApplication.Controllers
                 return BadRequest();
             }
 
-            newCourse.ID = Convert.ToInt32(id);
+            newCourse.ID = id;
 
             var oldCourse = Course.FindCourse(id);
             if (oldCourse == null)
@@ -75,13 +78,17 @@ namespace WebApplication.Controllers
         }
 
         //--------------------------------------------------------
+        // functions regarding the students of the courses.
+        //--------------------------------------------------------
 
+        // will return all the students in the course with the following id.
         [HttpGet("{id}/students")]
         public IEnumerable<Student> GetStudentsInCourse(int id)
         {
             return Course.GetAllStudentsInCourse(id);
         }
 
+        // Adds a new student to the course with the following 'courseID'.
         [Route("api/course/{courseID:int}/students")]
         [HttpPost]
         public IActionResult AddStudent(int courseID, [FromBody] Student student)
@@ -91,7 +98,7 @@ namespace WebApplication.Controllers
                 return BadRequest();
             }
             Course.AddStudent(courseID, student);
-            
+
             var location = Url.Link("GetStudent", new { id = student.SSN });
             return Created(location, student);
         }
