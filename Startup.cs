@@ -48,7 +48,7 @@ namespace WebApplication
                 .AddDefaultTokenProviders();
 
             services.AddSingleton<ICoursesRepository, CoursesRepository>();
-            services.AddSingleton<IStudentsRepository, StudentsRepository>();
+            services.AddSingleton<IStudentsRepository, StudentsRepository>();            
 
             services.AddMvc();
 

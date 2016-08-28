@@ -6,23 +6,26 @@ namespace WebApplication.Models
 {
     public class StudentsRepository : IStudentsRepository
     {
-        private static ConcurrentDictionary<int, Student> _students =
-            new ConcurrentDictionary<int, Student>();
-        int _nextSSN = 0;
+        private static ConcurrentDictionary<string, Student> _students =
+            new ConcurrentDictionary<string, Student>();
+        //int _nextSSN = 0;
 
         public StudentsRepository()
         {
             AddStudent(new Student
             {
-                Name = "Holmfridur"
+                Name = "Holmfridur",
+                SSN = "555"
             });
             AddStudent(new Student
             {
-                Name = "Steinn"
+                Name = "Steinn",
+                SSN = "666"
             });
             AddStudent(new Student
             {
-                Name = "Tomas"
+                Name = "Tomas",
+                SSN = "777"
             });
         }
         public IEnumerable<Student> GetAllStudents()
@@ -32,8 +35,13 @@ namespace WebApplication.Models
 
         public Student AddStudent(Student student)
         {
-            student.SSN = _nextSSN++;
             _students.TryAdd(student.SSN, student);
+            return student;
+        }
+        public Student FindStudent(string ssn)
+        {
+            Student student;
+            _students.TryGetValue(ssn, out student);
             return student;
         }
 

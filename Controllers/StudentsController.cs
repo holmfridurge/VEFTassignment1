@@ -1,38 +1,16 @@
-using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication.Models;
+using System;
 
 namespace WebApplication.Controllers
 {
-    [Route("/api/students")]
+    [Route("/api/[controller]")]
     public class StudentsController : Controller
     {
-        //private static List<Student> _students;
         public StudentsController(IStudentsRepository student)
         {
             Student = student;
-            /*if (_students == null)
-            {
-                _students = new List<Student>
-                {
-                    new Student
-                    {
-                        SSN  = 0104932859,
-                        Name = "Holmfridur"
-                    },
-                    new Student
-                    {
-                        SSN  = 0293265523,
-                        Name = "Steinn"
-                    },
-                    new Student
-                    {
-                        SSN  = 0655231129,
-                        Name = "Tomas"
-                    },
-                };
-            }*/
         }
         public IStudentsRepository Student { get; set; }
         public IEnumerable<Student> GetAllStudents()
@@ -40,10 +18,27 @@ namespace WebApplication.Controllers
             return Student.GetAllStudents();
         }
 
-        public ActionResult Index()
-        {
-           Console.WriteLine("got here.");
-           return View();
+        [HttpGet("{id}", Name = "GetStudent")]
+        public IActionResult GetStudentBySSN(string ssn) {
+            var student = Student.FindStudent(ssn);
+            if(student == null) 
+            {
+                return NotFound();
+            }
+            return new ObjectResult(student);
         }
+
+        [HttpPost]
+        public IActionResult AddStudent([FromBody] Student student)
+        {
+            if(student == null)
+            {
+                return BadRequest();
+            }
+            Student.AddStudent(student);
+            var location = Url.Link("GetStudent", new { SSN = student.SSN});
+            return Created(location, student);
+        }
+        
     }
 }

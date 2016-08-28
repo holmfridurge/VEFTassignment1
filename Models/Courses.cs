@@ -13,6 +13,7 @@ namespace WebApplication.Models
         // example: "T-514-VEFT"
         [Required]
         public int ID { get; set; }
+        Student student { get; set; }
         // example: 1
         [Required]
         public DateTime StartDate { get; set; }

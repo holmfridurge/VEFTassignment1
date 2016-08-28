@@ -21,7 +21,7 @@ namespace WebApplication.Controllers
         [HttpGet("{id}", Name = "GetCourse")]
         public IActionResult GetCourseById(int id)
         {
-            var item = Course.FindCourse(id); //Finds cours that has given ID
+            var item = Course.FindCourse(id); //Finds course with given ID
             if (item == null)
             {
                 return NotFound();
@@ -29,6 +29,13 @@ namespace WebApplication.Controllers
             return new ObjectResult(item);
         }
 
+//--------------------------------------------------------
+        [HttpGet("{id}/students")]
+        public IActionResult GetStudentsInCourse(int id)
+        {
+            
+        }
+//--------------------------------------------------------
         [HttpPost]
         public IActionResult AddCourse([FromBody] Course course)
         {
@@ -38,7 +45,7 @@ namespace WebApplication.Controllers
                 return BadRequest();
             }
             Course.AddCourse(course);
-            var location = Url.Link("GetCourse", new { id = course.ID }); 
+            var location = Url.Link("GetCourse", new { id = course.ID });
             return Created(location, course);
         }
 
@@ -54,7 +61,7 @@ namespace WebApplication.Controllers
 
             var oldCourse = Course.FindCourse(id);
             if (oldCourse == null)
-            { 
+            {
                 return NotFound();
             }
 
@@ -73,5 +80,17 @@ namespace WebApplication.Controllers
             Course.RemoveCourse(id);
             return new NoContentResult();
         }
+
+
+
+
+        /*[HttpPost]
+        [Route("{courseInstanceID:int}/students")]
+        public IActionResult AddStudent(int courseInstanceID, Student student)
+        {
+            // model.SSN now contains the value passed in
+
+        }*/
+
     }
 }

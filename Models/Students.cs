@@ -6,7 +6,7 @@ namespace WebApplication.Models
     public class Student
     {
         [Required]
-        public int SSN { get; set; }
+        public string SSN { get; set; }
         [Required]
         public string Name { get; set; }
     }
