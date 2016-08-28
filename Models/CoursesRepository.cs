@@ -8,7 +8,7 @@ namespace WebApplication.Models
     {
         private static ConcurrentDictionary<int, Course> _courses =
               new ConcurrentDictionary<int, Course>();
-        int _nextID = 1;
+        int _nextID = 0;
 
         public CoursesRepository()
         {

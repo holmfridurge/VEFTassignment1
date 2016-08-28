@@ -9,6 +9,22 @@ namespace WebApplication.Models
         private static ConcurrentDictionary<int, Student> _students =
             new ConcurrentDictionary<int, Student>();
         int _nextSSN = 0;
+
+        public StudentsRepository()
+        {
+            AddStudent(new Student
+            {
+                Name = "Holmfridur"
+            });
+            AddStudent(new Student
+            {
+                Name = "Steinn"
+            });
+            AddStudent(new Student
+            {
+                Name = "Tomas"
+            });
+        }
         public IEnumerable<Student> GetAllStudents()
         {
             return _students.Values;
