@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication.Models;
-using System;
 
 namespace WebApplication.Controllers
 {
